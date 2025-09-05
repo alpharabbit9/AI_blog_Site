@@ -1,0 +1,6 @@
+.bgGrad{
+    background-image: url('../../Assets/gradientBackground.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
