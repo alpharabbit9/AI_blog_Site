@@ -27,7 +27,7 @@ const Navbar = () => {
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-            <Link to={'/login'}>
+            <Link to={'/dashboard'}>
             <button className="btn">
               <img className="text-white bg-[#5044E5]" src={assets.arrow} alt="" />
               Logout</button>
