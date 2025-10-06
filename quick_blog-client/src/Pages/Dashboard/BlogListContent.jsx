@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { blog_data } from '../../Assets/assets';
 import {
     LayoutDashboard,
@@ -16,8 +16,29 @@ import {
     Upload,
     Sparkles
 } from 'lucide-react';
+import axios from 'axios';
 
-const BlogListContent = () => (
+const BlogListContent = () => {
+
+    const [blogData , setBlogData] = useState([]);
+
+
+    useEffect(()=>{
+
+        axios.get('http://localhost:3000/blogs')
+        .then(res => {
+            // console.log(res.data)
+            setBlogData(res.data)
+        })
+    }, [])
+
+
+
+
+
+
+
+    return (
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <h2 className="text-3xl font-bold text-gray-800">Blog List</h2>
@@ -40,7 +61,7 @@ const BlogListContent = () => (
                             </tr>
                         </thead>
                         <tbody>
-                            {blog_data.map((blog) => (
+                            {blogData.map((blog) => (
                                 <tr key={blog.id} className="hover:bg-gray-50">
                                     <td>
                                         <div>
@@ -83,6 +104,7 @@ const BlogListContent = () => (
                 </div>
             </div>
         </div>
-    );
+    )
+};
 
 export default BlogListContent

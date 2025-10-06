@@ -12,9 +12,11 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="flex gap-2">
+        <Link to={'/dashboard'}>
         <button className="btn bg-[#5044E5] text-white">
           <img src={assets.arrow} alt="" />
           Login</button>
+        </Link>
 
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">

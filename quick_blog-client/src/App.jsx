@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { Outlet } from 'react-router-dom';
 import 'quill/dist/quill.snow.css'
+import { Toaster } from 'react-hot-toast';
 
 const App = () => {
 
@@ -46,6 +47,8 @@ const App = () => {
         </footer>
 
       </div>
+
+      <Toaster/>
 
     </>
   )

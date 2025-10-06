@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import moment from 'moment';
 import { div } from 'framer-motion/client';
 import Loader from '../../components/Loader';
+import axios from 'axios';
 
 const BlogPage = () => {
 
@@ -19,11 +20,7 @@ const BlogPage = () => {
     }
 
 
-    const fetchBlogData = async () => {
-
-        const data = blog_data.find(item => item._id === id)
-        setData(data)
-    }
+    
 
     const fetchComments = async () =>{
         setComments(comments_data)
@@ -31,9 +28,15 @@ const BlogPage = () => {
 
     useEffect(() => {
 
-        fetchBlogData()
+        axios.get(`http://localhost:3000/blogs/${id}`)
+        .then(res => {
+            console.log(res.data)
+            setData(res.data)
+        })
+
+        
         fetchComments()
-    }, [])
+    }, [id])
 
 
     return data ? (

@@ -1,12 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { blog_data, blogCategories } from '../../Assets/assets'
 import { motion } from 'framer-motion';
 import BlogCard from '../../components/BlogCard';
+import axios from 'axios';
 
 
 const BlogSection = () => {
 
-    const [menu, setMenu] = useState('All')
+    const [blogData , setBlogData] = useState([]);
+     const [menu, setMenu] = useState('All')
+    
+    
+        useEffect(()=>{
+    
+            axios.get('http://localhost:3000/blogs')
+            .then(res => {
+                console.log(res.data)
+                setBlogData(res.data)
+            })
+        }, [])
+    
+
+   
     return (
         <div>
             <div className='flex justify-center gap-4 ssm:gap-8 my-10 relative'>
@@ -36,7 +51,7 @@ const BlogSection = () => {
             </div>
 
             <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-8 mb-24 mx-8 sm:mx-16 xl:mx-14'>
-                {blog_data.filter((blog) => menu === 'All' ? true : blog.category === menu)
+                {blogData.filter((blog) => menu === 'All' ? true : blog.category === menu)
                 .map((blog) => <BlogCard key={blog._id} blog={blog}/>)}
             </div>
         </div>
